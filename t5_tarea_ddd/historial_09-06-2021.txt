@@ -1,0 +1,54 @@
+export WORKON_HOME=~/Envs
+source ~/.local/bin/virtualenvwrapper.sh
+mkvirtualenv vprueba
+workon vprueba
+
+
+
+  938  workon my-venv3
+  939  pip install Flask
+  940  pip install flask-sqlalchemy
+  941  pip install PyMySQL
+  961  pip install Flask-Migrate  
+  	pip install flask-login
+  	pip install flask-bootstrap
+  	pip install Flask-WTF
+  	pip install email_validator
+  	pip install pymysql
+  963  pip install mysqlclient
+  950  export FLASK_CONFIG=development
+  951  export FLASK_APP=run.py
+  952  flask run
+  965  flask db init
+  967  flask db migrate
+  969  flask run
+  
+  
+  # Use an official Python runtime as a parent image
+FROM python:2.7-slim
+WORKDIR /app
+ADD . /app
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --trusted-host pypi.python.org Flask
+RUN pip install flask-sqlalchemy
+RUN pip install mysql-python
+RUN pip install PyMySQL
+RUN pip install mysqlclient
+RUN pip install Flask-Migrate
+RUN pip install 
+RUN export FLASK_APP=run.py
+RUN export FLASK_CONFIG=development
+RUN export FLASK_APP=run.py
+EXPOSE 5000
+CMD ["flask", "run"]
+
+
+
+
+
+docker build -t stsyssem2 .
+docker run --name stsyssem2_0 -p 5000:5000 stsyssem2
+az web up --sku B1 --name stsyssem2
+
+
+

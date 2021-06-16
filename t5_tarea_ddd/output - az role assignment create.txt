@@ -1,0 +1,14 @@
+{
+  "canDelegate": null,
+  "condition": null,
+  "conditionVersion": null,
+  "description": null,
+  "id": "/subscriptions/f7c58d25-2691-419c-b9b0-a139add22fa2/resourceGroups/microservicios_petstore/providers/Microsoft.ContainerRegistry/registries/acrpetstore/providers/Microsoft.Authorization/roleAssignments/33d4c9c4-ed9a-476e-8c72-5f9ebf1480dd",
+  "name": "33d4c9c4-ed9a-476e-8c72-5f9ebf1480dd",
+  "principalId": "8aa6dea3-6db4-4f8b-bf10-fbbbfa6444da",
+  "principalType": "ServicePrincipal",
+  "resourceGroup": "microservicios_petstore",
+  "roleDefinitionId": "/subscriptions/f7c58d25-2691-419c-b9b0-a139add22fa2/providers/Microsoft.Authorization/roleDefinitions/7f951dda-4ed3-4680-a7ca-43fe172d538d",
+  "scope": "/subscriptions/f7c58d25-2691-419c-b9b0-a139add22fa2/resourceGroups/microservicios_petstore/providers/Microsoft.ContainerRegistry/registries/acrpetstore",
+  "type": "Microsoft.Authorization/roleAssignments"
+}

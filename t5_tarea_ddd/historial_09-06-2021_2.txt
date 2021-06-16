@@ -1,0 +1,976 @@
+    1  sudo apt-get update
+    2  reboot
+    3  sudo apt update
+    4  sudo apt upgrade
+    5  sudo apt install build-essential dkms linux-headers-$(uname -r)
+    6  sudo apt-get install virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-dkms
+    7  exit
+    8  wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+    9  sudo apt-get install apt-transport-https
+   10  echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+   11  sudo apt-get update
+   12  sudo apt-get install sublime-text
+   13  sudo apt install python2
+   14  python
+   15  pyhton
+   16  sudo apt-get install build-essential checkinstall
+   17  sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+   18  cd /usr/src/
+   19  ls
+   20  wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz
+   21  ls
+   22  wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz
+   23  ls
+   24  sudo wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz
+   25  ls
+   26  sudo tar xzf Python-2.7.18.tgz
+   27  cd Python-2.7.18/
+   28  sudo ./configure --enable-optimizations
+   29  sudo make altinstall
+   30  python
+   31  python2.7
+   32  sudo apt install build-essential
+   33  sudo apt-get install manpages-dev
+   34  g++ -version
+   35  g++ --version
+   36  gcc --verion
+   37  gcc -v
+   38  clear
+   39  exit
+   40  python
+   41  sudo apt-get install guake
+   42  guake -p
+   43  exit
+   44  mkdir t1_myproject
+   45  exit
+   46  subl ./
+   47  pip install virtualenv
+   48  python
+   49  python3
+   50  python2.7
+   51  python2.7 -m pip install pip
+   52  sudo apt install software-properties-common
+   53  sudo add-apt-repository universe
+   54  sudo apt update 
+   55  sudo python2.7 get-pip.py
+   56  curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+   57  sudo apt install curl
+   58  curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+   59  sudo python2 get-pip.py
+   60  pip2 --version
+   61  ppip install virtualenv
+   62  pip install virtualenv
+   63  pip install virtualenvwrapper
+   64  export WORKON_HOME=~/Envs
+   65  source /usr/local/bin/virtualenvwrapper.sh
+   66  source ~/.local/bin/virtualenvwrapper.sh
+   67  sudo apt-get install build-essential
+   68  apt install python-pip
+   69  pip install virtualenv
+   70  pip install virtualenvwrapper
+   71  reboot
+   72  export WORKON_HOME=~/Envs
+   73  source ~/.local/bin/virtualenvwrapper.sh
+   74  source ~/.local/bin/virtualenvwrapper.sh 
+   75  python
+   76  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+   77  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+   78  export WORKON_HOME=~/Envs
+   79  source ~/.local/bin/virtualenvwrapper.sh
+   80  cd microservices_projects/t1_myproject/
+   81  touch comandos.tst
+   82  gedit comandos.tst 
+   83  mv comandos.tst comandos.txt
+   84  mkvirtualenv my-venv
+   85  workon my-venv
+   86  mkdir myproject
+   87  cd myproject
+   88  pip install Flask
+   89  touch run.py config.py requirements.txt
+   90  mkdir app
+   91  cd app
+   92  touch __init__.py views.py models.py
+   93  mkdir app/templates
+   94  cd ..
+   95  ls -R
+   96  mkdir app/templates
+   97  pip freeze > requirements.txt
+   98  cat requirements.txt 
+   99  subl ./
+  100  export FLASK_APP=run.py
+  101  flask run
+  102  pip install flask-sqlalchemy
+  103  pip install mysql-python
+  104  python get-pip.py
+  105  python2.7 get-pip.py
+  106  pip install mysql-python
+  107  pip install mysqlclient==1.3.12
+  108  pip install sqlalchemy --upgrade
+  109  mkdir instance
+  110  touch instance/config.py
+  111  cat instance/config.py 
+  112  export FLASK_CONFIG=development
+  113  export FLASK_APP=run.py
+  114  flask run
+  115  pip install flask-login
+  116  pip install flask-migrate
+  117  flask db init
+  118  flask db migrations/
+  119  flask db migrate
+  120  pip install pymysql
+  121  pip install mysqlclient
+  122  flask db migrate
+  123  flask db upgrade
+  124  ls
+  125  ls app
+  126  cd app
+  127  mkdir admin auth home
+  128  cd admin/
+  129  touch __init__.py forms.py views.py
+  130  cd ../auth/
+  131  touch __init__.py forms.py views.py
+  132  cd ../home/
+  133  touch __init__.py views.py
+  134  history
+  135  cd ..
+  136  ls
+  137  mkdir static templates
+  138  mkdir templates/home
+  139  cd ..
+  140  ls
+  141  mkdir app/static/css app/static/img
+  142  touch app/static/css/style.css
+  143  pip install Flask-WTF
+  144  pip install flask-bootstrap
+  145  mkdir app/templates/auth/
+  146  touch app/templates/auth/register.html login.html
+  147  mv login.html app/templates/auth/
+  148  flask run
+  149  pip install email_validator
+  150  flask run
+  151  touch app/templates/home/dashboard.html
+  152  flask run
+  153  clear
+  154  exit
+  155  mysql
+  156  sudo mysql
+  157  mysql -u root -p
+  158  systemctl status mysql.service
+  159  sudo mysqladmin -p -u root version
+  160  sudo apt-get install libmysqlclient-dev
+  161  sudo apt-get install python-dev
+  162  export PATH=$PATH:/usr/local/mysql/bin/
+  163  sudo apt-get install libmysqlclient-dev
+  164  apt-get install python-dev
+  165  sudo apt-get install python-dev
+  166  sudo apt-get install libmysqlclient-dev
+  167  sudo apt-get install mysql-server
+  168  sudo apt-get install mysql-client
+  169  sudo apt-get install libffi-dev
+  170  sudo apt-get install build-essential autoconf libtool pkg-config python-opengl python-pil python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev libssl-dev
+  171  sudo easy_install greenlet
+  172  sudo easy_install gevent
+  173  mysql -u root -p
+  174  exit
+  175  touch MySQL_pass.txt
+  176  MySQL-2021
+  177  echo 'MySQL-2021' > MySQL_pass.txt 
+  178  cat MySQL_pass.txt 
+  179  apt-get install python-mysqldb
+  180  sudo apt-get install python-mysqldb
+  181  exit
+  182  shutdown
+  183  shutdown -c
+  184  restart
+  185  reboot
+  186  mkdir t2_docker
+  187  mv t2_docker/ t1_myproject/
+  188  cd t1_myproject/
+  189  ls
+  190  mv t2_docker/ p2_docker
+  191  cat get-pip.py 
+  192  ls -lsa
+  193  rm get-pip.py 
+  194  cat comandos.txt 
+  195  gedit comandos.txt 
+  196  ls ~/Envs/
+  197  ls
+  198  cd p2_docker/
+  199  ls
+  200  exit
+  201  cd microservices_projects/t1_myproject/p2_docker/
+  202  docker run -d -p 80:80 docker/getting-started
+  203  docker run -dp 80:80 docker/getting-started
+  204  sudo groupadd docker
+  205  sudo usermod -aG docker ${USER}
+  206  su -s ${USER}
+  207  sudo su -s ${USER}
+  208  sudo 
+  209  sudo su
+  210  exit
+  211  history
+  212  sudo apt-get update
+  213  sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+  214  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  215  ~sudo apt-get update
+  216  sudo apt-get update
+  217  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  218  apt-cache madison docker-ce
+  219  sudo apt-get install docker-ce=5:20.10.6~3-0~ubuntu-focal docker-ce-cli=5:20.10.6~3-0~ubuntu-focal containerd.io
+  220  sudo docker run hello-world
+  221  docker run -dp 80:80 docker/getting-started
+  222  docker ps -a
+  223  exit
+  224  docker top
+  225  docker ps -a
+  226  sudo docker ps -a
+  227  sudo docker top 
+  228  sudo docker top sleepy_elgamal
+  229  exit
+  230  cd ../../t1_myproject/
+  231  ls
+  232  cd myproject/
+  233  ls
+  234  cat requirements.txt 
+  235  exit
+  236  curl localhost:8080
+  237  exit
+  238  sudo docker exec -it webapp7 bash
+  239  exit
+  240  cd ..
+  241  ls
+  242  cp p2_docker/ p2_testlocal
+  243  cp p2_docker/ p2_testlocal -r
+  244  cd p2_testlocal/
+  245  export WORKON_HOME=~/Envs
+  246  source ~/.local/bin/virtualenvwrapper.sh
+  247  mkvirtualenv my-venv2
+  248  workon my-venv2
+  249  pip install Flask
+  250  export FLASK_APP=run.py
+  251  flask run
+  252  gedit rf.sh
+  253  chmod +x rf.sh 
+  254  ./rf.sh 
+  255  cp rf.sh ../p2_docker/
+  256  exit
+  257  mysql -h 127.0.0.1 -P 6603 -u root -pMySQL-2021
+  258  exit
+  259  history service
+  260  history | greep service
+  261  history | grep service
+  262  systemctl status mysql.service
+  263  systemctl stop mysql.service
+  264  exit
+  265  docker run hello-world
+  266  docker run -dp 80:80 docker/getting-started
+  267  ls
+  268  ls -lsa
+  269  docker ps -a
+  270  docker start --attach keen_dijkstra 
+  271  docker ps -a
+  272  docker stop tender_snyder 
+  273  docker ps -a
+  274  docker ps
+  275  docker ps -s
+  276  docker ps -a
+  277  docker run -it ubuntu bash
+  278  docker ps
+  279  docker ps -a
+  280  docker
+  281  docker start --attach sleepy_elgamal 
+  282  docker ps -a
+  283  docker stop sleepy_elgamal 
+  284  docker ps -a
+  285  ls
+  286  subl ./
+  287  touch run.py config.py requirements.txt
+  288  mkdir app
+  289  cd app
+  290  touch __init__.py views.py models.py
+  291  mkdir templates
+  292  for i in $(seq 1 5); do echo "$i"; done
+  293  for i in $(seq 1 10); do echo "$i - Hello work!"; done
+  294  docker build -t mypyweb .
+  295  ls
+  296  cd ../
+  297  docker build -t mypyweb .
+  298  docker run --name webapp -p 8080:5000 mypyweb
+  299  docker ps -a
+  300  docker build -t mypyweb .
+  301  docker run --name webapp -p 8080:5000 mypyweb
+  302  docker run --name webapp -p 8080:5000 mypyweb2
+  303  docker build -t mypyweb2 .
+  304  docker run --name webapp2 -p 8080:5000 mypyweb
+  305  ls
+  306  docker build -t mypyweb .
+  307  docker run --name webapp3 -p 8080:5000 mypyweb
+  308  ls
+  309  docker build -t mypyweb .
+  310  docker run --name webapp4 -p 8080:5000 mypyweb
+  311  docker build -t mypyweb .
+  312  docker run --name webapp5 -p 8080:5000 mypyweb
+  313  clear
+  314  docker build -t mypyweb .
+  315  docker run --name webapp6 -p 8080:8080 mypyweb
+  316  docker build -t mypyweb .
+  317  docker run --name webapp7 -p 8080:8080 mypyweb
+  318  docker build -t mypyweb .
+  319  docker run --name webapp7 -p 5000:5000 mypyweb
+  320  docker run --name webapp8 -p 5000:5000 mypyweb
+  321  docker run --name webapp7 -p 5000:5000 mypyweb
+  322  docker build -t mypyweb .
+  323  docker run --name webapp9 -p 5000:5000 mypyweb
+  324  docker build -t cqf/webapp .
+  325  docker run -p 8888:5000 yourusername/catnip
+  326  docker run -p 8888:5000 cqf/webapp
+  327  docker run -p 8888:0.0.0.0:5000 cqf/webapp
+  328  docker run -p 0.0.0.0:8888:0.0.0.0:5000 cqf/webapp
+  329  cd ../
+  330  ls
+  331  cd p2_testlocal/
+  332  ls
+  333  gedit app.py
+  334  gedit Dockerfile
+  335  ls
+  336  mkdir ../p2_copiaweb
+  337  mv app.py ../p2_copiaweb/
+  338  cd ../*copiaweb
+  339  ls
+  340  gedit Dockerifle
+  341  mv Dockerifle Dockerfile
+  342  docker build -t mypyweb .
+  343  docker build -t copiaweb .
+  344  docker run --name copiawebapp_1 -p 8080:4000 copiaweb
+  345  gedit app.py 
+  346  docker build -t copiaweb .
+  347  docker run --name copiawebapp_2 -p 8080:4000 copiaweb
+  348  docker build -t copiaweb .
+  349  docker run --name copiawebapp_3 -p 8080:4000 copiaweb
+  350  docker build -t copiaweb .
+  351  docker run --name copiawebapp_4 -p 8080:4000 copiaweb
+  352  docker build -t copiaweb .
+  353  docker run --name copiawebapp_5 -p 8080:4000 copiaweb
+  354  cd ..
+  355  ls
+  356  mkdir p3_db
+  357  mkdir p3_app
+  358  cd p3_
+  359  cd p3_db/
+  360  docker pull mysql/mysql-server:latest
+  361  docker images
+  362  docker run --name=container_mysql_1 -d mysql/mysql-server:latest
+  363  docker ps
+  364  docker exec -it container_mysql_1 mysql -uroot -p
+  365  docker exec -it container_mysql_1 mysql -u root -p
+  366  docker logs container_mysql_1 
+  367  docker exec -it container_mysql_1 mysql -u root -p
+  368  docker inspect container_mysql_1 
+  369  docker ps
+  370  docker stop container_mysql_1 
+  371  docker run --detach --name=container_mysql_2 --env="MYSQL_ROOT_PASSWORD=MySQL-2021" --publish 6603:3306 mysql/mysql-server:latest
+  372  docker logs container_mysql_2
+  373  mysql -u root -p -h 127.0.0.1 -p 6603
+  374  mysql -uroot -p -h127.0.0.1 -p6603
+  375  mysql -uroot -pMySQL-2021 -h127.0.0.1 -p6603
+  376  docker exec -it mysql1 mysql -uroot -p
+  377  docker exec -it container_mysql_2 mysql -uroot -p
+  378  docker exec shell
+  379  docker exec -it container_mysql_2 bash
+  380  cd ../p3_app/
+  381  cp ../myproject ./ -r
+  382  ls
+  383  cd myproject/
+  384  ls
+  385  cd ..
+  386  ls
+  387  mv myproject/ copia_p1/
+  388  ls
+  389  cd copia_p1/
+  390  ls
+  391  subl ./
+  392  gedit ../../p2_docker/Dockerfile 
+  393  docker ps
+  394  docker stop container_mysql_2 
+  395  exit
+  396  cd microservices_projects/t1_myproject/p2_docker/
+  397  ls
+  398  docker run hello-world
+  399  newgrp docker 
+  400  exit
+  401  sudo docker ps -a
+  402  sudo docker stop webapp4
+  403  sudo docker ps -a
+  404  sudo docker stop webapp5
+  405  sudo docker stop webapp6
+  406  sudo docker stop webapp7
+  407  sudo docker stop webapp8
+  408  sudo docker stop webapp9
+  409  sudo docker stop cqf/webapp
+  410  sudo docker ps -a
+  411  sudo docker stop cranky_sutherland
+  412  python
+  413  apt-get install mysql-client
+  414  sudo apt-get install mysql-client
+  415  docker inspect container_mysql_2
+  416  sudo docker inspect container_mysql_2
+  417  mysql -uroot -h172.17.0.2 -P6603 -p
+  418  mysql -uroot -h172.17.0.1 -P6603 -p
+  419  mysql -uroot -h172.17.0.1 -P6603 -pMySQL-2021
+  420  mysql -uroot -h172.17.0.2 -P6603 -pMySQL-2021
+  421  mysql -uroot -P6603 -p
+  422  mysql -uroot -P6603 -pMySQL-2021
+  423  mysql -u root -P 6603 -p
+  424  mysql -uroot -P6603 -pMySQL-2021
+  425  sudo apt-get update
+  426  exit
+  427  soporte@152.74.36.130
+  428  ssh soporte@152.74.36.130
+  429  exit
+  430  sudo apt-get update
+  431  sudo su
+  432  ..
+  433  ls
+  434  cd ..
+  435  ls
+  436  cd
+  437  ls
+  438  cd microservices_projects/
+  439  ls
+  440  cd t1_myproject/
+  441  ls
+  442  exit
+  443  s
+  444  ls
+  445  cd microservices_projects/
+  446  ls
+  447  cd t1_myproject/
+  448  ls
+  449  cd p3_db/
+  450  ls
+  451  docker ps
+  452  docker image
+  453  docker images 
+  454  docker rm 5a5ca83c4f86
+  455  docker rm
+  456  docker rm --help
+  457  history
+  458  sudo service mysql status
+  459  netstat -tlnp
+  460  mysql -u root
+  461  mysql -u root -p
+  462  ps -ef
+  463  ps -ef | grep mysql
+  464  lsof 859
+  465  lsof 859 -p s
+  466  lsof --help
+  467  man lsof
+  468  telnet
+  469  netstat
+  470  sudo apt install net-tools
+  471  netstat -tlnp
+  472  docker run --detach --name=container_mysql_2 --
+  473  docker run --detach --name=container_mysql_2 --env="MYSQL_ROOT_PASSWORD=MySQL-2021" --publish 6603:3306 mysql/mysql-server:latest
+  474  docker run --detach --name=container_mysql_3 --env="MYSQL_ROOT_PASSWORD=MySQL-2021" --publish 6603:3306 mysql/mysql-server:latest
+  475  netstat -tlnp
+  476  mysql -uroot -P6603 -p
+  477  mysql -uroot .p
+  478  mysql -uroot -p
+  479  mysql -uroot -p -P3306
+  480  cd microservices_projects/
+  481  ls
+  482  cd t1_myproject/
+  483  ls
+  484  cd myproject/
+  485  ls
+  486  ls
+  487  export FLASK_CONFIG=development
+  488  export FLASK_APP=run.py
+  489  flask run
+  490  export WORKON_HOME=~/Envs
+  491  source ~/.local/bin/virtualenvwrapper.sh
+  492  workon my-venv
+  493  export FLASK_CONFIG=development
+  494  export WORKON_HOME=~/Envs
+  495  flask run
+  496  python --version
+  497  exit
+  498  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  499  curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+  500  echo "$(<kubectl.sha256) kubectl" | sha256sum --check
+  501  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  502  kubectl version --client
+  503  sudo apt-get update
+  504  kubectl cluster-info
+  505  kubectl cluster-info dump
+  506  minikube start
+  507  kubectl get po -A
+  508  ls
+  509  cd microservices_projects/
+  510  ls
+  511  cd tarea_escalabilidad/
+  512  ls
+  513  mkdir service/access
+  514  mkdir service
+  515  mkdir service/access
+  516  touch service/access/hello-application.yaml
+  517  gedit service/access/hello-application.yaml 
+  518  kubectl apply -f service/access/hello-application.yaml 
+  519  kubectl get deployments hello-world
+  520  cd
+  521  kubectl get deployments hello-world
+  522  kubectl describe deployments hello-world
+  523  kubectl get replicasets
+  524  kubectl describe replicasets
+  525  kubectl expose deployment hello-world --type=NodePort --name=example-service
+  526  kubectl describe services example-service
+  527  kubectl get pods --selector="run=load-balancer-example" --output=wide
+  528  curl http://172.17.0.4:30633
+  529  curl http://172.17.0.3:30633
+  530  kubectl cluster-info
+  531  curl http://192.168.49.2:30633
+  532  exit
+  533  sudo apt-get install gimp
+  534  apt remove gimp
+  535  sudo apt remove gimp
+  536  ls ~/.kube/
+  537  ls /usr/local/bin/kubectl 
+  538  rm /usr/local/bin/kubectl 
+  539  sudo rm /usr/local/bin/kubectl 
+  540  sudo rm -rf ~/.kube/
+  541  ls ~/.kube/
+  542  exit
+  543  kubectl get services
+  544  kubectl get services hello-minikube
+  545  minikube pause
+  546  minikube --help
+  547  minikube status
+  548  minikube delete --all
+  549  history
+  550  history | grep minikube
+  551  sudo apt remove kubectl
+  552  exit
+  553  cd Descargas/
+  554  ls
+  555  cd ..
+  556  ls
+  557  whereis minikube
+  558  minikube stop; minikube delete
+  559  docker stop (docker ps -aq)
+  560  rm -r ~/.kube ~/.minikube
+  561  sudo rm -r ~/.kube ~/.minikube
+  562  sudo rm /usr/local/bin/localkube /usr/local/bin/minikube
+  563  cd /usr/local/bin/minikube
+  564  cd /usr/local/bin/
+  565  ls
+  566  systemctl stop '*kubelet*.mount'
+  567  sudo rm -rf /etc/kubernetes/
+  568  docker system prune -af --volumes
+  569  minikube stop; minikube delete
+  570  docker stop (docker ps -aq)
+  571  rm -r ~/.kube ~/.minikube
+  572  sudo rm /usr/local/bin/localkube /usr/local/bin/minikube
+  573  systemctl stop '*kubelet*.mount'
+  574  exit
+  575  cd microservices_projects/
+  576  ls
+  577  cd t
+  578  cd t1_myproject/
+  579  ls
+  580  cd p3_db/
+  581  ls
+  582  cd ..
+  583  top
+  584  clear
+  585  ls
+  586  sudo docker run hello-world
+  587  export WORKON_HOME=~/Envs
+  588  source /usr/local/bin/virtualenvwrapper.sh
+  589  source ~/.local/bin/virtualenvwrapper.sh
+  590  sudo docker run hello-world
+  591  docker run hello-world
+  592  docker images
+  593  docker run --name=mysql10 -d mysql/mysql-server:latest
+  594  docker ps
+  595  cd
+  596  cd .ssh/
+  597  ls
+  598  ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
+  599  ls
+  600  cat id_ed25519.pub 
+  601  eval "$(ssh-agent -s)"
+  602  ssh-add ~/.ssh/id_ed25519
+  603  ssh -T git@github.com
+  604  exit
+  605  echo "# microservicios" >> README.md
+  606  git init
+  607  git add README.md
+  608  git commit -m "first commit"
+  609  git branch -M main
+  610  git remote add origin https://github.com/cquijadafuentes/microservicios.git
+  611  git push -u origin maingit config --global user.email "cquijadafuentes@gmail.com"
+  612  git config --global user.email "cquijadafuentes@gmail.co"
+  613  git config --global user.name "Carlos Quijada-Fuentes"
+  614  echo "# microservicios" >> README.md
+  615  git init
+  616  git add README.md
+  617  git commit -m "first commit"
+  618  git branch -M main
+  619  git remote add origin https://github.com/cquijadafuentes/microservicios.git
+  620  git push -u origin main
+  621  ls
+  622  ls -lsah
+  623  touch 
+  624  touch .gitignore 
+  625  gedit .gitignore 
+  626  gedit .gitignore &
+  627  ls
+  628  cd tarea_ddd/
+  629  ls
+  630  cd ../tarea_escalabilidad/
+  631  ls
+  632  cd service/
+  633  ls
+  634  cd ..
+  635  cd ../
+  636  ls
+  637  cd ../
+  638  ls
+  639  cd microservices_projects/
+  640  ls
+  641  cd t1_myproject/
+  642  ls
+  643  cd ..
+  644  ls
+  645  cd tarea_ddd/
+  646  ls
+  647  cd ../
+  648  git add .
+  649  git commit -m "subida de los archivos de tareas."
+  650  git push 
+  651  ls
+  652  cd tarea_ddd/
+  653  ls
+  654  gedit
+  655  export WORKON_HOME=~/Envs
+  656  source ~/.local/bin/virtualenvwrapper.sh
+  657  mkvirtualenv my-venv
+  658  workon my-venv
+  659  mkdir myproject
+  660  cd myprojec
+  661  ls
+  662  cd myproject/
+  663  ls
+  664  touch run.py config.py requirements.txt
+  665  mkdir app
+  666  cd app
+  667  touch __init__.py views.py models.py
+  668  mkdir templates
+  669  ls
+  670  touch run.py config.py requirements.txt
+  671  mkdir app
+  672  cd app
+  673  touch __init__.py views.py models.py
+  674  mkdir templates
+  675  ls
+  676  subl ./
+  677  cd ..
+  678  ls
+  679  cd ..
+  680  ls
+  681  subl ./
+  682  export FLASK_APP=run.py
+  683  flask run
+  684  ls
+  685  pip install Flask
+  686  flask run
+  687  ls
+  688  pip freeze > requirements.txt
+  689  export FLASK_APP=run.py
+  690  flask run
+  691  export FLASK_APP=run.py
+  692  ls
+  693  flask run
+  694  env FLASK_APP=theflaskapp.py python -m flask run
+  695  ython -m flask run
+  696  python -m flask run
+  697  flask run
+  698  cd app/templates/
+  699  ls
+  700  cd ../
+  701  ls
+  702  rm run.py config.py requirements.txt 
+  703  ls
+  704  flask run
+  705  history
+  706  lsvirtualenv 
+  707  workon my-venv2
+  708  ls
+  709  flask run
+  710  touch __init__.py views.py models.py
+  711  mkdir templates
+  712  python
+  713  python --version
+  714  python3.8 flask run
+  715  flash
+  716  cd ..
+  717  ls
+  718  rm run.pyc 
+  719  cat requirements.txt 
+  720  touch __init__.py views.py models.py
+  721  mkdir templatesexport FLASK_APP=run.py
+  722  export FLASK_APP=run.py
+  723  flask run
+  724  ls
+  725  rm * -rf
+  726  pip install Flask
+  727  touch run.py config.py requirements.txt
+  728  mkdir app
+  729  cd app
+  730  touch __init__.py views.py models.py
+  731  mkdir templates
+  732  cd ..
+  733  ls
+  734  pip freeze > requirements.txt
+  735  export FLASK_APP=run.py
+  736  flask run
+  737  cd ..
+  738  git clone https://github.com/Azure-Samples/python-docs-hello-world
+  739  python3 -m venv .venv
+  740  python3 --help
+  741  ls -lsa
+  742  rm .venv/
+  743  rm .venv/ -rf
+  744  ls -lsa
+  745  ls
+  746  python3 --version
+  747  ls
+  748  cat requirements.txt 
+  749  cd ..
+  750  ls
+  751  cd myproject/
+  752  ls
+  753  cd ../h
+  754  cd ../python-docs-hello-world/
+  755  ls
+  756  touch Dockerfile
+  757  subl Dockerfile 
+  758  ls
+  759  history
+  760  ls
+  761  docker build -t mypyweb .
+  762  docker run --name mypyweb_1 -p 8080:5000 mypyweb
+  763  docker run --name mypyweb_2 -p 5000:5000 mypyweb
+  764  az acr create --name petstoremicroservicios2021 --resource-group microservicios_petstore-chm --sku Basic --admin-enabled true
+  765  az acr create --name petstoremicroservicios2021 --resource-group microservicios_petstore --sku Basic --admin-enabled true
+  766  az acr credential show --resource-group AppSvc-DockerTutorial-rg --name <registry-name>
+  767  az acr credential show --resource-group microservicios_petstore --name petstoremicroservicios2021
+  768  docker login petstoremicroservicios2021.azurecr.io --username petstoremicroservicios2021
+  769  docker tag man
+  770  docker tag --help
+  771  docker tag mypyweb <registry-name>.azurecr.io/microservicios2021-mypyweb-holamundo:latest
+  772  docker tag mypyweb petstoremicroservicios2021.azurecr.io/microservicios2021-mypyweb-holamundo:latest
+  773  docker push petstoremicroservicios2021.azurecr.io/microservicios2021-mypyweb-holamundo:latest
+  774  az acr repository list -n petstoremicroservicios2021
+  775  az appservice plan create --name petstoremicroservicios2021-plan --resource-group microservicios_petstore --is-linux
+  776  az webapp create --resource-group microservicios_petstore --plan petstoremicroservicios2021-plan --name app-mypyweb-webapp --deployment-container-image-name petstoremicroservicios2021.azurecr.io/microservicios2021-mypyweb-holamundo:latest
+  777  az webapp config appsettings set --resource-group microservicios_petstore --name app-mypyweb-webapp --settings WEBSITES_PORT=8000
+  778  az webapp config appsettings set --resource-group microservicios_petstore --name app-mypyweb-webapp --settings WEBSITES_PORT=5000
+  779  az webapp identity assign --resource-group microservicios_petstore --name app-mypyweb-webapp --query principalId --output tsv
+  780  ls
+  781  az account show --query id --output tsv
+  782  az role assignment create --assignee 2bae15ea-d725-4ace-8ce7-52cad2b5b828 --scope /subscriptions/f7c58d25-2691-419c-b9b0-a139add22fa2/resourceGroups/microservicios_petstore/providers/Microsoft.ContainerRegistry/registries/petstoremicroservicios2021 --role "AcrPull"
+  783  az webapp config container set --name app-mypyweb-webapp --resource-group microservicios_petstore --docker-custom-image-name petstoremicroservicios2021.azurecr.io/microservicios2021-mypyweb-holamundo:latest --docker-registry-server-url https://petstoremicroservicios2021.azurecr.io
+  784  sudo apt-get update
+  785  sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
+  786  curl -sL https://packages.microsoft.com/keys/microsoft.asc |     gpg --dearmor |     sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+  787  AZ_REPO=$(lsb_release -cs)
+  788  echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |     sudo tee /etc/apt/sources.list.d/azure-cli.list
+  789  sudo apt-get update
+  790  sudo apt-get install azure-cli
+  791  az login
+  792  hisotry
+  793  history
+  794  cd python-docs-hello-world/
+  795  python3 -m venv .venv
+  796  python --version
+  797  python3 --version
+  798  sudo apt-get install python3-venv
+  799  python3 -m venv .venv
+  800  source .venv/bin/activate
+  801  pip install -r requirements.txt
+  802  flask run
+  803  az webapp up --sku B1 --name holamundoazure
+  804  az webapp up --sku B1 --name holamundoazure75548
+  805  az group delete --no-wait
+  806  mysql --host=db-microservices-petstore.mysql.database.azure.com --user=petstoreadmin@db-microservices-petstore -p
+  807  exit
+  808  mysql –host=db-microservices-petstore.mysql.database.azure.com --user=petstoreadmin@db-microservices-petstore -p
+  809  az login
+  810  mysql –host=db-microservices-petstore.mysql.database.azure.com --user=petstoreadmin@db-microservices-petstore -p
+  811  az account list --all
+  812  mysql –host=db-microservices-petstore.mysql.database.azure.com --user=petstoreadmin@db-microservices-petstore -p
+  813  mysql –host=petstore-database.mysql.database.azure.com --user=petstoreadmin@petstore-database -p
+  814  az login
+  815  mysql –host=petstore-database.mysql.database.azure.com --user=petstoreadmin@petstore-database -p
+  816  mysql –host=db-microservices-petstore.mysql.database.azure.com --user=petstoreadmin@db-microservices-petstore -p
+  817  az login
+  818  az account set f7c58d25-2691-419c-b9b0-a139add22fa2
+  819  az account set --subscription f7c58d25-2691-419c-b9b0-a139add22fa2
+  820  az mysql server show --resource-group microservicios_petstore --name db-microservices-petstore
+  821  mysql -h db-microservices-petstore.mysql.database.azure.com -u petstoreadmin@db-microservices-petstore -p
+  822  exit
+  823  ls
+  824  cd myproject/
+  825  ls
+  826  subl ./
+  827  export WORKON_HOME=~/Envs
+  828  source ~/.local/bin/virtualenvwrapper.sh
+  829  mkvirtualenv my-venv3
+  830  workon my-venv3
+  831  history
+  832  pip install Flask
+  833  pip install flask-sqlalchemy
+  834  pip install mysql-python
+  835  pip install PyMySQL
+  836  mkdir instance
+  837  touch instance/config.py
+  838  export FLASK_CONFIG=development
+  839  export FLASK_APP=run.py
+  840  flask run
+  841  pip install flask-login
+  842  pip install flask-migrate
+  843  flask db init
+  844  flask db migrate
+  845  flask db init
+  846  pip install flask-migrate
+  847  flask db init
+  848  pip install flask-login
+  849  flask db init
+  850  pip install Flask-WTF
+  851  pip install flask-bootstrap
+  852  pip install email_validator
+  853  flask db init
+  854  flask db migrate
+  855  pip install mysqlclient
+  856  flask db migrate
+  857  flask db init
+  858  flask db migrate
+  859  pip install mysql-connector-python
+  860  flask db init
+  861  flask db migrate
+  862  pip install mysql-connector-python
+  863  import mysql.connector
+  864  from mysql.connector import errorcode
+  865  # Obtain connection string information from the portal
+  866  config = {
+  867  }
+  868  # Construct connection string
+  869  try:
+  870  except mysql.connector.Error as err:
+  871  else:
+  872  python
+  873  flask db init
+  874  flask db migrate
+  875  exit
+  876  mv config ~/.ssh/
+  877  cd ~/.ssh/
+  878  cat id_ed25519.pub 
+  879  ssh xermade 
+  880  ssh rafike 
+  881  ssh cuda 
+  882  ssh gg
+  883  ssh mcc 
+  884  ssh oci
+  885  ssh compostela 
+  886  exit
+  887  cd microservices_projects/
+  888  ls
+  889  cd tarea_ddd/
+  890  ls
+  891  cd .
+  892  cd ..
+  893  ls
+  894  ls -lsa
+  895  cd tarea_ddd/
+  896  ls
+  897  ls -lsa
+  898  cd myproject
+  899  ls
+  900  cd ..
+  901  ls
+  902  mkdir sem-2
+  903  cd sem-2/
+  904  mkdir flaskdbapp
+  905  export WORKON_HOME=~/Envs
+  906  source /usr/local/bin/virtualenvwrapper.sh
+  907  source ~/.local/bin/virtualenvwrapper.sh
+  908  mkvirtualenv venv_sem2
+  909  workon my-venv
+  910  pip install flask flask-sqlalchemy
+  911  pip install pymysql
+  912  touch app.py 
+  913  subl ./
+  914  flask run
+  915  ls
+  916  mv app.py* flaskdbapp/
+  917  ls
+  918  cd flaskdbapp/
+  919  subl ./
+  920  export FLASK_APP=app.py
+  921  flask run
+  922  pip install SQLAlchemy
+  923  flask run
+  924  pip install ModelSchema
+  925  python --version
+  926  python3 --version
+  927  cd ..
+  928  ls
+  929  cd ..
+  930  ls 
+  931  cd myproject
+  932  ls
+  933  subl ./
+  934  ls -lsa
+  935  cd ..
+  936  ls
+  937  ls -lsa
+  938  workon my-venv3
+  939  pip install Flask
+  940  pip install flask-sqlalchemy
+  941  pip install PyMySQL
+  942  pip install flask-migrate
+  943  export FLASK_APP=run.py
+  944  flask db init
+  945  export FLASK_APP=run.py
+  946  ls
+  947  cd myproject
+  948  ls
+  949  export FLASK_APP=run.py
+  950  export FLASK_CONFIG=development
+  951  export FLASK_APP=run.py
+  952  flask run
+  953  flask db init
+  954  flask db migrate
+  955  pip install mysqlclient
+  956  flask db init
+  957  flask db migrate
+  958  flask db init
+  959  flask db migrate
+  960  flask db init
+  961  pip install Flask-Migrate
+  962  flask db init
+  963  pip install mysqlclient
+  964  flask db upgrade
+  965  flask db init
+  966  flask db upgrade
+  967  flask db migrate
+  968  flask init
+  969  flask run
+  970  history > ../historial_09-06-2021.txt
+  971  gedit ../historial_09-06-2021.txt 
+  972  gedit ../historial_09-06-2021.txt &
+  973  docker build -t stsyssem2 .
+  974  pwe
+  975  pwd
+  976  history > ../historial_09-06-2021_2.txt
