@@ -11,7 +11,7 @@ def homepage():
     """
     Render the homepage template on the / route
     """
-    return render_template('home/index.html', title="Welcome")
+    return render_template('home/index.html', title="PetStoreSystem")
 
 
 @home.route('/dashboard')
@@ -22,3 +22,13 @@ def dashboard():
     """
     return render_template('home/dashboard.html', title="Dashboard")
     
+
+@home.route('/listall')
+def listatodos():
+    return "Listando todos los items:"
+    
+
+@home.route('/list/<iduser>')
+def listaporuser(iduser):
+    x = "listando items de " + iduser
+    return x

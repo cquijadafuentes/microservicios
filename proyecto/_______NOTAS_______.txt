@@ -1,7 +1,19 @@
 
+flask db init
+flask db migrate
+
+
+mysql --host=db-microservices-petstore.mysql.database.azure.com --user=petstoreadmin@db-microservices-petstore -p
+Pet_Store
+
+show databases;
+use petstoredb;
+show tables;
+
 
 export WORKON_HOME=~/Envs
 source ~/.local/bin/virtualenvwrapper.sh
+workon my-venv3
 
 
 Ambientes con los que s eesta trabajando:

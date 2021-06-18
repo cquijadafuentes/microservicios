@@ -69,3 +69,19 @@ class Programa(db.Model):
 
     def __repr__(self):
         return '<Programa: {}>'.format(self.name)
+
+
+class ShoppingCart(db.Model):
+    """
+    Create a ShoppingCart table
+    """
+
+    __tablename__ = 'shoppingcarts'
+
+    id_user = db.Column(db.Integer, primary_key=True)
+    id_pet = db.Column(db.Integer, primary_key=True)
+    cant = db.Column(db.Integer)
+    unitprice = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<ShoppingCart: {}>'.format(self.name)
