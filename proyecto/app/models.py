@@ -84,4 +84,37 @@ class ShoppingCart(db.Model):
     unitprice = db.Column(db.Integer)
 
     def __repr__(self):
-        return '<ShoppingCart: {}>'.format(self.name)
+        return "<ShoppingCart(id_user='%s', id_pet='%s', cant='%s', unitprice='%s')>" % (
+                                self.id_user, self.id_pet, self.cant, self.unitprice)
+
+    @property
+    def serialize(self):
+       """Return object data in easily serializable format"""
+       return {
+           'id_user' : self.id_user,
+           'id_pet' : self.id_pet,
+           'cant' : self.cant,
+           'unitprice' : self.unitprice
+       }
+
+    def update(self):
+        print("Ingresando al update de ShoppingCart")
+        return self
+
+    def add(self):
+        print("Ingresando al add de ShoppingCart")
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    def update(self):
+        print("Ingresando al udpate de ShoppingCart")
+        db.session.commit()
+        return self
+
+    def delete(self):
+        print("Ingresando al delete de ShoppingCart")
+        db.session.delete(self)
+        db.session.commit()
+        return self
+
