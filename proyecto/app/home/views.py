@@ -39,8 +39,12 @@ def listaporuser(iduser=0):
 @home.route('/api/update/<iduser>/<idprod>/<newcant>')
 def modificacant(iduser=0, idprod=0, newcant=0):
     carrito = ShoppingCart.query.filter_by(id_user=iduser, id_pet=idprod).first()
+    if carrito is None:
+        return "No existe el registro en el carrito", 400
+
     if(newcant == '0'):
-        return eliminaitem(iduser, idprod)
+        eliminaitem(iduser, idprod)
+        return "Item del carrito eliminado", 200
 
     carrito.cant = newcant
     carrito.update()
@@ -50,14 +54,17 @@ def modificacant(iduser=0, idprod=0, newcant=0):
 @home.route('/api/delete/<iduser>/<idprod>')
 def eliminaitem(iduser=0, idprod=0):
     carrito = ShoppingCart.query.filter_by(id_user=iduser, id_pet=idprod).first()
+    if carrito is None:
+        return "No existe el registro en el carrito", 400
     carrito.delete()
-    resp = jsonify(carrito.serialize)
-    resp.status_code = 200
-    return y
+    return "Item del carrito eliminado", 200
 
 
 @home.route('/api/create/<iduser>/<idprod>/<valor>')
 def insertaunitem(iduser=0, idprod=0, valor=0):
+    A = ShoppingCart.query.filter_by(id_user=iduser, id_pet=idprod).first()
+    if A is not None:
+        return "El registro del carrito ya existe", 400
     carrito = ShoppingCart()
     carrito.id_user = iduser
     carrito.id_pet = idprod
@@ -69,6 +76,9 @@ def insertaunitem(iduser=0, idprod=0, valor=0):
 
 @home.route('/api/create/<iduser>/<idprod>/<cantidad>/<valor>')
 def insertaitems(iduser=0, idprod=0, cantidad=0, valor=0):
+    A = ShoppingCart.query.filter_by(id_user=iduser, id_pet=idprod).first()
+    if A is not None:
+        return "El registro del carrito ya existe", 400
     carrito = ShoppingCart()
     carrito.id_user = iduser
     carrito.id_pet = idprod
