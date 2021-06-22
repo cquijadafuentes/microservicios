@@ -36,7 +36,7 @@ def listaporuser(iduser=0):
     return jsonify(json_list=[i.serialize for i in carritos])
 
 
-@home.route('/api/update/<iduser>/<idprod>/<newcant>')
+@home.route('/api/update/cant/<iduser>/<idprod>/<newcant>')
 def modificacant(iduser=0, idprod=0, newcant=0):
     carrito = ShoppingCart.query.filter_by(id_user=iduser, id_pet=idprod).first()
     if carrito is None:
@@ -47,6 +47,17 @@ def modificacant(iduser=0, idprod=0, newcant=0):
         return "Item del carrito eliminado", 200
 
     carrito.cant = newcant
+    carrito.update()
+    return jsonify(carrito.serialize)
+
+
+@home.route('/api/update/price/<iduser>/<idprod>/<newprice>')
+def modificaprice(iduser=0, idprod=0, newprice=0):
+    carrito = ShoppingCart.query.filter_by(id_user=iduser, id_pet=idprod).first()
+    if carrito is None:
+        return "No existe el registro en el carrito", 400
+
+    carrito.unitprice = newprice
     carrito.update()
     return jsonify(carrito.serialize)
 
