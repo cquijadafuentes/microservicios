@@ -1,0 +1,41 @@
+<!-- app/templates/home/pets.html -->
+
+{% block title %}Mascotas{% endblock %}
+{% block body %}
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>Pet Store Management System</h1>
+                    <h3>Pets are the best!</h3>
+                    <hr class="intro-divider">                    
+                    </ul>
+                    <div id="results">
+                      <table class="table table-striped" style="max-width: 300px;">
+                        <thead>
+                          <tr>
+                            <th>Especie</th>
+                            <th>Breed</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                          </tr>
+                        </thead>
+                        {% for pet in pets%}
+                        {% if pet['stock'] > 0 %}
+                          <tr>
+                            <td>{{ pet['specie'] }}</td>
+                            <td>{{ pet['breed'] }}</td>
+                            <td>{{ pet['price'] }}</td>
+                            <td>{{ pet['stock'] }}</td>
+                          </tr>
+                        {% endif %}
+                        {% endfor %}
+                      </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

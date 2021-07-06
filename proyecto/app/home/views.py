@@ -6,6 +6,7 @@ from ..models import ShoppingCart
 
 from . import home
 
+import requests
 
 @home.route('/')
 def homepage():
@@ -22,6 +23,20 @@ def dashboard():
     Render the dashboard template on the /dashboard route
     """
     return render_template('home/dashboard.html', title="Dashboard")
+
+
+@home.route('/listusers')
+def listusers():
+    users = requests.get('http://petstorecustomer.appspot.com/list/all').json()
+    print(users)
+    return render_template('home/users.html', title="Lista Ususarios", users=users)
+
+@home.route('/listpets')
+def listpets():
+    pets = requests.get('http://practiceiv-on-gcloud.appspot.com/products/fetch').json()['products']
+    print(pets)
+    return render_template('home/pets.html', title="Lista Mascotas", pets=pets)
+
 
 
 @home.route('/api/listall')
