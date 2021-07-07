@@ -31,12 +31,19 @@ def listusers():
     print(users)
     return render_template('home/users.html', title="Lista Ususarios", users=users)
 
+
 @home.route('/listpets')
 def listpets():
     pets = requests.get('http://practiceiv-on-gcloud.appspot.com/products/fetch').json()['products']
     print(pets)
     return render_template('home/pets.html', title="Lista Mascotas", pets=pets)
 
+
+@home.route('/shoppingcart')
+def shoppingcart():
+    pets = requests.get('http://studentestwebapp.azurewebsites.net/api/listall').json()['json_list']
+    print(pets)
+    return render_template('home/shoppingcart.html', title="Carrito de compra", pets=pets)
 
 
 @home.route('/api/listall')
