@@ -1,0 +1,24 @@
+HISTORIAL DE CONSULTAS PARA EL INFORME
+
+Realizar requests
+https://docs.python-requests.org/en/latest/user/quickstart/#make-a-request
+
+Desplegar JSON
+https://stackoverflow.com/questions/32665659/typeerror-response-object-has-no-attribute-getitem
+
+Desplegar en HTML
+https://realpython.com/flask-by-example-part-3-text-processing-with-requests-beautifulsoup-nltk/
+
+Instalar Sessions para Python
+https://flask-session.readthedocs.io/en/latest/
+https://testdriven.io/blog/flask-sessions/
+
+
+
+
+
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
