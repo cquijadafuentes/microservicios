@@ -1,5 +1,6 @@
 <!-- app/templates/home/pets.html -->
 
+{% extends "base.html" %}
 {% block title %}Carrito de Compra{% endblock %}
 {% block body %}
 <div class="intro-header">
@@ -8,7 +9,7 @@
             <div class="col-lg-12">
                 <div class="intro-message">
                     <h1>Pet Store Management System</h1>
-                    <h3>Pets are the best!</h3>
+                    <h3>Carrito de Compra</h3>
                     <hr class="intro-divider">                    
                     </ul>
                     <div id="results">
@@ -29,7 +30,7 @@
                             <td>{{ pet['id_user'] }}</td>
                             <td>{{ pet['cant'] }}</td>
                             <td>{{ pet['unitprice'] }}</td>
-                            <td><button type="button">Agregar</button></td>
+                            <td><a href="/deletepet/{{ pet['id_pet'] }}">Eliminar</a></td>
                           </tr>
                         {% endif %}
                         {% endfor %}

@@ -1,6 +1,7 @@
 # app/home/views.py
 from flask import jsonify
 from flask import render_template
+from flask import session
 from flask_login import login_required
 from ..models import ShoppingCart
 
@@ -24,6 +25,22 @@ def dashboard():
     """
     return render_template('home/dashboard.html', title="Dashboard")
 
+@home.route('/homelogin/<username>/<userphone>')
+def homelogin(username=None, userphone=None):
+    if userphone is not None :
+        session['sess_loged_username'] = username
+        session['sess_loged_userphone'] = userphone
+    
+    return shoppingcart()
+
+
+@home.route('/homelogout')
+def homelogout():
+    print("saliendo!")
+    session.pop('sess_loged_username', default=None)
+    session.pop('sess_loged_userphone', default=None)
+    return render_template('home/index.html', title="PetStoreSystem")
+
 
 @home.route('/listusers')
 def listusers():
@@ -41,9 +58,33 @@ def listpets():
 
 @home.route('/shoppingcart')
 def shoppingcart():
-    pets = requests.get('http://studentestwebapp.azurewebsites.net/api/listall').json()['json_list']
+    pets = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone']).json()['json_list']
     print(pets)
     return render_template('home/shoppingcart.html', title="Carrito de compra", pets=pets)
+
+@home.route('/addpet/<idpet>/<value>')
+def addpet(idpet, value):
+    A = ShoppingCart.query.filter_by(id_user=session['sess_loged_userphone'], id_pet=idpet).first()
+    if A is not None:
+        A.cant += 1
+        A.update()
+        return listpets()
+    carrito = ShoppingCart()
+    carrito.id_user = id_user=session['sess_loged_userphone']
+    carrito.id_pet = idpet
+    carrito.cant = 1
+    carrito.unitprice = value
+    carrito.add()
+    return listpets()
+
+
+@home.route('/deletepet/<idpet>')
+def deletepet(idpet):
+    carrito = ShoppingCart.query.filter_by(id_user=session['sess_loged_userphone'], id_pet=idpet).first()
+    if carrito is None:
+        return "No existe el registro en el carrito", 400
+    carrito.delete()
+    return "Item del carrito eliminado", 200
 
 
 @home.route('/api/listall')

@@ -1,5 +1,6 @@
 <!-- app/templates/home/pets.html -->
 
+{% extends "base.html" %}
 {% block title %}Usuarios{% endblock %}
 {% block body %}
 <div class="intro-header">
@@ -8,7 +9,7 @@
             <div class="col-lg-12">
                 <div class="intro-message">
                     <h1>Pet Store Management System</h1>
-                    <h3>Pets are the best!</h3>
+                    <h3>Usuarios Registrados</h3>
                     <hr class="intro-divider">                    
                     </ul>
                     <div id="results">
@@ -19,6 +20,7 @@
                             <th>Dirección</th>
                             <th>Teléfono</th>
                             <th>Dinero</th>
+                            <th>  </th>
                           </tr>
                         </thead>
                         {% for user in users%}
@@ -31,6 +33,7 @@
                         {% else %}    
                             <td>{{ CARGAR }}</td>
                         {% endif %}
+                            <td> <a href="/homelogin/{{ user['name'] }}/ {{ user['phone'] }}"> Iniciar Sesión </a></td>
                           </tr>
                         {% endfor %}
                       </table>
