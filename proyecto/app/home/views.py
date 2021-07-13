@@ -2,6 +2,7 @@
 from flask import jsonify
 from flask import render_template
 from flask import session
+from flask import request
 from flask_login import login_required
 from ..models import ShoppingCart
 
@@ -40,6 +41,23 @@ def homelogout():
     session.pop('sess_loged_username', default=None)
     session.pop('sess_loged_userphone', default=None)
     return render_template('home/index.html', title="PetStoreSystem")
+
+
+@home.route('/register', methods=['GET','POST'])
+def register():
+    if request.method == 'POST':
+        print("recibiendo datos - registrando")
+        print(request.form['username'])
+        print(request.form['phone'])
+        print(request.form['address'])
+        datos = {'name':request.form['username'], 'phone':request.form['phone'], 'address':request.form['address']}
+        registro = requests.post('http://petstorecustomer.appspot.com/create', json = datos)
+        if registro.status_code == 200:
+            return homelogin(request.form['username'], request.form['phone'])
+        print("respuesta: " + registro.text)
+    print("desplegando webpage - registrando")
+    return render_template('home/registro.html', title="Registro")
+
 
 
 @home.route('/listusers')
