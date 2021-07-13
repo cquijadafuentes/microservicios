@@ -14,8 +14,12 @@ https://flask-session.readthedocs.io/en/latest/
 https://testdriven.io/blog/flask-sessions/
 
 
+Manejar tipo de request para los métodos en los views:
+https://pythonbasics.org/flask-http-methods/
 
 
+JSON para crear usuario:
+https://stackoverflow.com/questions/30673079/send-json-to-flask-using-requests/30673415
 
 
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">

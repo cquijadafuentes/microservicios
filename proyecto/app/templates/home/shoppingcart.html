@@ -13,28 +13,34 @@
                     <hr class="intro-divider">                    
                     </ul>
                     <div id="results">
-                      <table class="table table-striped" style="max-width: 300px;">
-                        <thead>
-                          <tr>
-                            <th>ID_mascota</th>
-                            <th>ID_usuario</th>
-                            <th>Cantidad</th>
-                            <th>Precio Unitario</th>
-                            <th> -- </th>
-                          </tr>
-                        </thead>
-                        {% for pet in pets %}
-                        {% if pet['cant'] > 0 %}
-                          <tr>
-                            <td>{{ pet['id_pet'] }}</td>
-                            <td>{{ pet['id_user'] }}</td>
-                            <td>{{ pet['cant'] }}</td>
-                            <td>{{ pet['unitprice'] }}</td>
-                            <td><a href="/deletepet/{{ pet['id_pet'] }}">Eliminar</a></td>
-                          </tr>
-                        {% endif %}
-                        {% endfor %}
-                      </table>
+                      {% if pets %}
+                        <table class="table table-striped" style="max-width: 300px;">
+                          <thead>
+                            <tr>
+                              <th>ID_mascota</th>
+                              <th>ID_usuario</th>
+                              <th>Cantidad</th>
+                              <th>Precio Unitario</th>
+                              <th> -- </th>
+                            </tr>
+                          </thead>
+                          {% for pet in pets %}
+                            {% if pet['cant'] > 0 %}
+                            <tr>
+                              <td>{{ pet['id_pet'] }}</td>
+                              <td>{{ pet['id_user'] }}</td>
+                              <td>{{ pet['cant'] }}</td>
+                              <td>{{ pet['unitprice'] }}</td>
+                              <td><a href="/deletepet/{{ pet['id_pet'] }}">Eliminar</a></td>
+                            </tr>
+                            {% endif %}
+                          {% endfor %}
+                        </table>
+                        <a href="/checkout">Realizar Compra</a>
+                      {% else %}
+                        Su carrito está vacío... mire las mascotas de la tienda <a href="{{ url_for('home.listpets') }}">AQUÍ</a>
+                      {% endif %}
+                      <br><br>
                     </div>
                 </div>
             </div>
