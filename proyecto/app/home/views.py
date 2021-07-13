@@ -26,11 +26,12 @@ def dashboard():
     """
     return render_template('home/dashboard.html', title="Dashboard")
 
-@home.route('/homelogin/<username>/<userphone>')
-def homelogin(username=None, userphone=None):
+@home.route('/homelogin/<username>/<userphone>/<useraddress>')
+def homelogin(username=None, userphone=None, useraddress=None):
     if userphone is not None :
         session['sess_loged_username'] = username
         session['sess_loged_userphone'] = userphone
+        session['sess_loged_useraddress'] = useraddress
     
     return shoppingcart()
 
@@ -40,6 +41,7 @@ def homelogout():
     print("saliendo!")
     session.pop('sess_loged_username', default=None)
     session.pop('sess_loged_userphone', default=None)
+    session.pop('sess_loged_useraddress', default=None)
     return render_template('home/index.html', title="PetStoreSystem")
 
 
@@ -79,6 +81,26 @@ def shoppingcart():
     pets = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone']).json()['json_list']
     print(pets)
     return render_template('home/shoppingcart.html', title="Carrito de compra", pets=pets)
+
+@home.route('/checkout')
+def checkout():
+    pets = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone']).json()['json_list']
+    print("Solicitando la compra!...")
+    print(pets)
+    """
+    Validar stock de los items en el carrito de compra
+    """
+    shCarts = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone']).json()['json_list']
+    pets = requests.get('http://practiceiv-on-gcloud.appspot.com/products/fetch').json()['products']
+    suma = 0
+    print("Carrito:")
+    for cart in shCarts:
+        for pet in pets:
+            print(str(cart))
+            print(str(pet))
+    return "en desarrollo"
+
+
 
 @home.route('/addpet/<idpet>/<value>')
 def addpet(idpet, value):
