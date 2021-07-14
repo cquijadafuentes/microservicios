@@ -78,35 +78,81 @@ def listpets():
 
 @home.route('/shoppingcart')
 def shoppingcart():
-    pets = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone']).json()['json_list']
-    print(pets)
-    return render_template('home/shoppingcart.html', title="Carrito de compra", pets=pets)
+    req_pets = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone'])
+    while req_pets.status_code != 200:
+        print(str(req_pets))
+        print("Otra vez...")
+        req_pets = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone'])
+    print(req_pets.json()['json_list'])
+    return render_template('home/shoppingcart.html', title="Carrito de compra", pets=req_pets.json()['json_list'])
 
 @home.route('/checkout')
 def checkout():
-    pets = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone']).json()['json_list']
     print("Solicitando la compra!...")
-    print(pets)
     """
     Validar stock de los items en el carrito de compra
     """
     shCarts = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone']).json()['json_list']
     pets = requests.get('http://practiceiv-on-gcloud.appspot.com/products/fetch').json()['products']
     suma = 0
+    mascotas = []
+    actualizastock = []
     print("Carrito:")
     for cart in shCarts:
         for pet in pets:
             if cart["id_pet"] == pet["id"]:
                 print(str(cart))
                 print(str(pet))
+                mascotas.append({'pet_species':pet["specie"], 'pet_breed':pet["breed"], 'pet_amount':cart["cant"], 'pet_price':pet["price"]})
                 if cart["cant"] <= pet["stock"]:
                     print("Stock OK")
                     suma += (cart["cant"] * pet["price"])
+                    nuevostock = pet["stock"] - cart["cant"]
+                    actualizastock.append({'id':pet["id"], 'stock':nuevostock})
     print("suma: " + str(suma))
     user = requests.get('http://petstorecustomer.appspot.com/list/byphone/'+session['sess_loged_userphone']).json()
     if suma <= user[0]["credit"]:
+        """
+        Solicitar orden
+        """
+        uname = session['sess_loged_username']
+        uphone = session['sess_loged_userphone']
+        uaddress = session['sess_loged_useraddress']
+        data_orden = {'address':uaddress, 'name':uname, 'phone':uphone, 'pets':mascotas}
+        print(data_orden)
+        req_orden = requests.post('http://petstoreorder.appspot.com/create/order', json=data_orden)
+        print("solicitando orden ...")
+        while req_orden.status_code != 200:
+            print(str(req_orden))
+            print("Otra vez...")
+            req_orden = requests.post('http://petstoreorder.appspot.com/create/order', json=data_orden)
+        """
+        Vaciar carro
+        """
         for cart in shCarts:
             eliminaitem(cart["id_user"], cart["id_pet"])
+        """
+        Reducir mascotas (servicio falla -> eliminar crear)
+        """
+        print("Reduciendo stock mascotas")
+        for actstock in actualizastock:
+            print(str(actstock))
+            req_updatestock = requests.post('http://practiceiv-on-gcloud.appspot.com/products/update', json=actstock)
+            while req_updatestock.status_code != 200:
+                print(str(req_updatestock))
+                print("Otra vez...")
+                req_updatestock = requests.post('http://practiceiv-on-gcloud.appspot.com/products/update', json=actstock)
+        """
+        Reducir monto de la compra al usuario
+        """
+        print("Reduciendo monto al cliente"+str(int(suma)))
+        print('http://petstorecustomer.appspot.com/pay/'+str(int(suma))+'/by-customer-with-phone/'+uphone)
+        req_creditupdate = requests.get('http://petstorecustomer.appspot.com/pay/'+str(int(suma))+'/by-customer-with-phone/'+uphone)
+        print(str(req_creditupdate))
+        while req_creditupdate.status_code != 200:
+            print("Otra vez...")
+            req_creditupdate = requests.get('http://petstorecustomer.appspot.com/pay/'+str(int(suma))+'/by-customer-with-phone/'+uphone)
+            print(str(req_creditupdate))
         return render_template('home/shoppingcart.html', title="Carrito de compra")
     return "Venta no se pudo realizar, saldo insuficiente"
 
