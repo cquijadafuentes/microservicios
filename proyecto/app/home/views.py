@@ -96,9 +96,19 @@ def checkout():
     print("Carrito:")
     for cart in shCarts:
         for pet in pets:
-            print(str(cart))
-            print(str(pet))
-    return "en desarrollo"
+            if cart["id_pet"] == pet["id"]:
+                print(str(cart))
+                print(str(pet))
+                if cart["cant"] <= pet["stock"]:
+                    print("Stock OK")
+                    suma += (cart["cant"] * pet["price"])
+    print("suma: " + str(suma))
+    user = requests.get('http://petstorecustomer.appspot.com/list/byphone/'+session['sess_loged_userphone']).json()
+    if suma <= user[0]["credit"]:
+        for cart in shCarts:
+            eliminaitem(cart["id_user"], cart["id_pet"])
+        return render_template('home/shoppingcart.html', title="Carrito de compra")
+    return "Venta no se pudo realizar, saldo insuficiente"
 
 
 
