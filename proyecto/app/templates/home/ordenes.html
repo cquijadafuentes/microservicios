@@ -1,0 +1,36 @@
+<!-- app/templates/home/pets.html -->
+
+{% extends "base_2.html" %}
+{% block title %}Usuarios{% endblock %}
+{% block body %}
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>Pet Store Management System</h1>
+                    <h3>Historial de Compras</h3>
+                    <hr class="intro-divider">                    
+                    </ul>
+                    <div id="results">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Fecha</th>
+                            <th>Detalle</th>
+                          </tr>
+                        </thead>
+                        {% for order in orders%}
+                          <tr>
+                            <td>{{ order['timestamp'] }}</td>
+                            <td> <a href="/orderat/{{ order['timestamp'] }}"> Ver detalle </a> </td>
+                          </tr>
+                        {% endfor %}
+                      </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

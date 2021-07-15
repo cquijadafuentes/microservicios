@@ -15,11 +15,14 @@
                       {% if message %}
                         {{ message }} <br> <br>
                       {% endif %}
+                      {% if fechahora %}
+                        <h3>Fecha: {{ fechahora }}</h3>
+                      {% endif %}
                       <table class="table table-striped">
                         <thead>
                           <tr>
                             <th>Especie</th>
-                            <th>Mascota</th>
+                            <th>Raza</th>
                             <th>Valor unitario</th>
                             <th>Cantidad</th>
                           </tr>

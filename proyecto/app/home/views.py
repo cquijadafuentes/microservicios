@@ -54,9 +54,9 @@ def register(message=None):
         print(request.form['address'])
         datos = {'name':request.form['username'], 'phone':request.form['phone'], 'address':request.form['address']}
         req_cliente = requests.get('http://petstorecustomer.appspot.com/list/byphone/'+request.form['phone'])
-        print(str(req_cliente.text))
-        if req_cliente is not None:
+        if len(req_cliente.json()) > 0:
             print("Telefono de usuario ya existe")
+            print(str(req_cliente.json()))
             return render_template('home/registro.html', title="Registro", message="Telefono de usuario ya existe")
         registro = requests.post('http://petstorecustomer.appspot.com/create', json = datos)
         if registro.status_code == 200:
@@ -132,6 +132,8 @@ def shoppingcart(message=None):
                 modificacant(session['sess_loged_userphone'], petcart["id_pet"], pcrejson["stock"])
                 petcart['cant'] = pcrejson['stock']
                 mmss = "El carrito de compra se ha actualizado por stock."
+            petcart['breed'] = pcrejson['breed']
+            petcart['specie'] = pcrejson['specie']
             pets.append(petcart)
     return render_template('home/shoppingcart.html', title="Carrito de compra", pets=pets, message=mmss)
 
@@ -211,12 +213,34 @@ def checkout():
         print("Orden exitosa:")
         print(str(req_creditupdate))
         print(req_creditupdate.text)
-        return render_template('home/ordendecompra.html', title="Orden de Compra", message="Compra realizada correctamente.", mascotas=mascotas, total=suma)
+        return render_template('home/ordendecompra.html', title="Orden de Compra", message="Compra realizada correctamente.", mascotas=mascotas, total=int(suma))
     if suma > user[0]["credit"]:
         print("Usuario sin saldo suficiente")
         return shoppingcart("Venta no se pudo realizar, saldo insuficiente")
     print("Mascotas en el carro = 0")
     return shoppingcart()
+
+@home.route('/orders')
+def orders():
+    req_orders = requests.get('http://petstoreorder.appspot.com/list/orders/all')
+    print(req_orders.text)
+    userorders = []
+    for order in req_orders.json():
+        if order['customer_phone'] == int(session['sess_loged_userphone']):
+            print("orden de usuario entcontrada: " + str(order))
+            userorders.append(order)
+    return render_template('home/ordenes.html', title="Ordenes de Compra", orders=userorders)
+
+@home.route('/orderat/<fechahora>')
+def orderat(fechahora=None):
+    if fechahora is None:
+        return listpets()
+    order_req = requests.get('http://petstoreorder.appspot.com/list/pets/orderedby/'+session['sess_loged_userphone']+'/at/'+fechahora)
+    orderjson = order_req.json()
+    total = 0
+    for pet in orderjson:
+        total = total + (pet['pet_amount'] * pet['pet_price'])
+    return render_template('home/ordendecompra.html', title="Orden de Compra", mascotas=orderjson, total=int(total), fechahora=fechahora)
 
 
 

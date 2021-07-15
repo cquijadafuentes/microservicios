@@ -21,7 +21,7 @@
                     <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
                     <li><a href="{{ url_for('home.listpets') }}">Mascotas</a></li>
                     <li><a href="{{ url_for('home.homelogout') }}">Logout</a></li>
-                    <li><a><i class="fa fa-user"></i>  Hi, {{ session['sess_loged_username'] }}!</a></li>
+                    <li><a href="{{ url_for('home.orders') }}"><i class="fa fa-user"></i>  Hi, {{ session['sess_loged_username'] }}!</a></li>
                     <li><a href="{{ url_for('home.shoppingcart') }}">Carrito de Compras</a></li>
                   {% else %}
                     <li><a href="{{ url_for('home.homepage') }}">Home</a></li>

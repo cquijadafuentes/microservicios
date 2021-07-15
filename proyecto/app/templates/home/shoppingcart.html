@@ -19,8 +19,8 @@
                         <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th>ID_mascota</th>
-                              <th>ID_usuario</th>
+                              <th>Especie</th>
+                              <th>Raza</th>
                               <th>Cantidad</th>
                               <th>Precio Unitario</th>
                               <th> -- </th>
@@ -29,8 +29,8 @@
                           {% for pet in pets %}
                             {% if pet['cant'] > 0 %}
                             <tr>
-                              <td>{{ pet['id_pet'] }}</td>
-                              <td>{{ pet['id_user'] }}</td>
+                              <td>{{ pet['specie'] }}</td>
+                              <td>{{ pet['breed'] }}</td>
                               <td>{{ pet['cant'] }}</td>
                               <td>{{ pet['unitprice'] }}</td>
                               <td><a href="/deletepet/{{ pet['id_pet'] }}">Eliminar</a></td>
