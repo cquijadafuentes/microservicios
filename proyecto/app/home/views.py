@@ -109,9 +109,12 @@ def listusers():
 
 @home.route('/listpets')
 def listpets(message=None):
-    pets = requests.get('http://practiceiv-on-gcloud.appspot.com/products/fetch').json()['products']
-    print(pets)
-    return render_template('home/pets.html', title="Lista Mascotas", pets=pets, message=message)
+    pets = requests.get('http://practiceiv-on-gcloud.appspot.com/products/fetch')
+    while pets.status_code != 200:
+        print(str(pets))
+        print("Otra vez...")
+        pets = requests.get('http://practiceiv-on-gcloud.appspot.com/products/fetch')
+    return render_template('home/pets.html', title="Lista Mascotas", pets=pets.json()['products'], message=message)
 
 
 @home.route('/shoppingcart')

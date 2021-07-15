@@ -19,15 +19,15 @@
                     <form class="form" method="POST">
                       <div class="form-group">
                         <label class="control-label" for="username">Nombre</label><br>
-                        <input class="form-control" type="text" name="username">
+                        <input class="form-control" type="text" required minlength="1" name="username">
                       </div>
                       <div class="form-group">
                         <label class="control-label" for="address">Dirección</label><br>
-                        <input class="form-control" type="text" name="address">
+                        <input class="form-control" type="text" required minlength="1" name="address">
                       </div>
                       <div class="form-group">
                         <label class="control-label" for="phone">Teléfono</label><br>
-                        <input class="form-control" type="number" name="phone">
+                        <input class="form-control" type="number" required min="0" name="phone">
                       </div>
                       <div class="form-group">
                         <input type="submit" value="Guardar"></button>

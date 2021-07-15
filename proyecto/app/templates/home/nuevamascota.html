@@ -19,27 +19,27 @@
                     <form method="POST">
                       <div class="form-group">
                         <label class="control-label" for="specie">Especie</label><br>
-                        <input class="form-control" type="text" name="specie">
+                        <input class="form-control" type="text" required minlength="1" name="specie">
                       </div>
                       <div class="form-group">
                         <label class="control-label" for="breed">Raza</label><br>
-                        <input class="form-control" type="text" name="breed">
+                        <input class="form-control" type="text" required minlength="1" name="breed">
                       </div>
                       <div class="form-group">
                         <label class="control-label" for="image_url">Enlace a imagen</label><br>
-                        <input class="form-control" type="text" name="image_url">
+                        <input class="form-control" type="text" required minlength="1" name="image_url">
                       </div>
                       <div class="form-group">
                         <label class="control-label" for="id">ID</label><br>
-                        <input class="form-control" type="number" name="id">
+                        <input class="form-control" type="number" required name="id">
                       </div>
                       <div class="form-group">
                         <label class="control-label" for="price">Valor</label><br>
-                        <input class="form-control" type="number" name="price">
+                        <input class="form-control" type="number" required min="0" name="price">
                       </div>
                       <div class="form-group">
                         <label class="control-label" for="stock">Stock</label><br>
-                        <input class="form-control" type="number" name="stock">
+                        <input class="form-control" type="number" required min="1" name="stock">
                       </div>
                       <div class="form-group">
                         <input type="submit" value="Guardar"></button>
