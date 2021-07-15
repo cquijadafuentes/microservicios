@@ -8,11 +8,14 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="intro-message">
-                    <h1>Pet Store Management System</h1>
-                    <h3>Mascotas de la Tienda</h3>
+                    <h2>Mascotas</h2>
                     <hr class="intro-divider">                    
                     </ul>
                     <div id="results">
+                      {% if message %}
+                        {{ message }} <br> <br>
+                      {% endif %}
+                      <a href="/registerpet"> Registrar nueva mascota </a> <br>
                       <table class="table table-striped" style="max-width: 300px;">
                         <thead>
                           <tr>

@@ -46,19 +46,52 @@ def homelogout():
 
 
 @home.route('/register', methods=['GET','POST'])
-def register():
+def register(message=None):
     if request.method == 'POST':
         print("recibiendo datos - registrando")
         print(request.form['username'])
         print(request.form['phone'])
         print(request.form['address'])
         datos = {'name':request.form['username'], 'phone':request.form['phone'], 'address':request.form['address']}
+        req_cliente = requests.get('http://petstorecustomer.appspot.com/list/byphone/'+request.form['phone'])
+        print(str(req_cliente.text))
+        if req_cliente is not None:
+            print("Telefono de usuario ya existe")
+            return render_template('home/registro.html', title="Registro", message="Telefono de usuario ya existe")
         registro = requests.post('http://petstorecustomer.appspot.com/create', json = datos)
         if registro.status_code == 200:
             return homelogin(request.form['username'], request.form['phone'])
         print("respuesta: " + registro.text)
     print("desplegando webpage - registrando")
     return render_template('home/registro.html', title="Registro")
+
+
+@home.route('/registerpet', methods=['GET','POST'])
+def registerpet():
+    if request.method == 'POST':
+        print("recibiendo datos - registrando")
+        print(request.form['breed'])
+        print(request.form['id'])
+        print(request.form['image_url'])
+        print(request.form['price'])
+        print(request.form['specie'])
+        print(request.form['stock'])
+        req_pet = requests.get('http://practiceiv-on-gcloud.appspot.com/products/get/id/'+request.form['id'])
+        print(req_pet.status_code)
+        print(req_pet.text)
+        if req_pet.status_code == 200:
+            print("La mascota con esa id ya existe")
+            return render_template('home/nuevamascota.html', title="Registro", message="El id de la mascota ya existe")
+        datos = {'breed':request.form['breed'], 'id':int(request.form['id']), 'image_url':request.form['image_url'], 'price':int(request.form['price']), 'specie':request.form['specie'], 'stock':int(request.form['stock'])}
+        print(str(datos))
+        registro = requests.post('http://practiceiv-on-gcloud.appspot.com/products/create', json=datos)
+        print("respuesta: " + registro.text)
+        while registro.status_code != 200:
+            registro = requests.post('http://practiceiv-on-gcloud.appspot.com/products/create', json=datos)
+            print("respuesta: " + registro.text)    
+        return listpets("Mascota registrada correctamente")
+    print("desplegando webpage de registro de mascota")
+    return render_template('home/nuevamascota.html', title="Registro")
 
 
 
@@ -70,21 +103,36 @@ def listusers():
 
 
 @home.route('/listpets')
-def listpets():
+def listpets(message=None):
     pets = requests.get('http://practiceiv-on-gcloud.appspot.com/products/fetch').json()['products']
     print(pets)
-    return render_template('home/pets.html', title="Lista Mascotas", pets=pets)
+    return render_template('home/pets.html', title="Lista Mascotas", pets=pets, message=message)
 
 
 @home.route('/shoppingcart')
-def shoppingcart():
+def shoppingcart(message=None):
     req_pets = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone'])
     while req_pets.status_code != 200:
         print(str(req_pets))
         print("Otra vez...")
         req_pets = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone'])
     print(req_pets.json()['json_list'])
-    return render_template('home/shoppingcart.html', title="Carrito de compra", pets=req_pets.json()['json_list'])
+    mmss = message
+    pets = []
+    for petcart in req_pets.json()['json_list']:
+        print(petcart)
+        pc_req = requests.get('http://practiceiv-on-gcloud.appspot.com/products/get/id/'+str(petcart['id_pet']))
+        if pc_req.status_code == 404:
+            mmss += " - Carrito modificado por problemas de stock \n"
+            eliminaitem(session['sess_loged_userphone'], petcart['id_pet'])
+        else:
+            pcrejson = pc_req.json() 
+            print(str(pcrejson))
+            if pcrejson['stock'] < petcart['cant']:
+                petcart['cant'] = pcrejson['stock']
+                mmss += (" - " + petcart['breed'] + " " + petcart['specie']) + " se ha actualizado por stock.\n"
+            pets.append(petcart)
+    return render_template('home/shoppingcart.html', title="Carrito de compra", pets=req_pets.json()['json_list'], message=mmss)
 
 @home.route('/checkout')
 def checkout():
@@ -95,6 +143,7 @@ def checkout():
     shCarts = requests.get('http://studentestwebapp.azurewebsites.net/api/list/'+session['sess_loged_userphone']).json()['json_list']
     pets = requests.get('http://practiceiv-on-gcloud.appspot.com/products/fetch').json()['products']
     suma = 0
+    cantidadmascotas = 0
     mascotas = []
     actualizastock = []
     print("Carrito:")
@@ -109,9 +158,12 @@ def checkout():
                     suma += (cart["cant"] * pet["price"])
                     nuevostock = pet["stock"] - cart["cant"]
                     actualizastock.append({'id':pet["id"], 'stock':nuevostock})
+                else:
+                    return shoppingcart()
     print("suma: " + str(suma))
+    print("mascotas cant: " + str(len(mascotas)))
     user = requests.get('http://petstorecustomer.appspot.com/list/byphone/'+session['sess_loged_userphone']).json()
-    if suma <= user[0]["credit"]:
+    if suma <= user[0]["credit"] and len(mascotas) > 0:
         """
         Solicitar orden
         """
@@ -152,9 +204,11 @@ def checkout():
         while req_creditupdate.status_code != 200:
             print("Otra vez...")
             req_creditupdate = requests.get('http://petstorecustomer.appspot.com/pay/'+str(int(suma))+'/by-customer-with-phone/'+uphone)
-            print(str(req_creditupdate))
-        return render_template('home/shoppingcart.html', title="Carrito de compra")
-    return "Venta no se pudo realizar, saldo insuficiente"
+        print("Orden exitosa:")
+        print(str(req_creditupdate))
+        print(req_creditupdate.text)
+        return render_template('home/shoppingcart.html', title="Carrito de compra", message="Compra realizada correctamente.")
+    return shoppingcart("Venta no se pudo realizar, saldo insuficiente")
 
 
 
@@ -171,16 +225,16 @@ def addpet(idpet, value):
     carrito.cant = 1
     carrito.unitprice = value
     carrito.add()
-    return listpets()
+    return listpets("La mascota ha sido agregada al carrito")
 
 
 @home.route('/deletepet/<idpet>')
 def deletepet(idpet):
     carrito = ShoppingCart.query.filter_by(id_user=session['sess_loged_userphone'], id_pet=idpet).first()
     if carrito is None:
-        return "No existe el registro en el carrito", 400
+        return shoppingcart("El carrito de compras ha sido actualizado.")
     carrito.delete()
-    return "Item del carrito eliminado", 200
+    return shoppingcart("El carrito de compras ha sido actualizado.")
 
 
 @home.route('/api/listall')
