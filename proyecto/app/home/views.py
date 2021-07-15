@@ -127,8 +127,8 @@ def shoppingcart(message=None):
     for petcart in req_pets.json()['json_list']:
         print(petcart)
         pc_req = requests.get('http://practiceiv-on-gcloud.appspot.com/products/get/id/'+str(petcart['id_pet']))
-        if pc_req.status_code == 404:
-            mmss += " - Carrito modificado por problemas de stock \n"
+        if pc_req.status_code == 404 or pc_req.json()['stock'] == 0:
+            mmss = "El carrito de compra se ha actualizado por stock."
             eliminaitem(session['sess_loged_userphone'], petcart['id_pet'])
         else:
             pcrejson = pc_req.json() 
