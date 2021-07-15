@@ -20,9 +20,10 @@
                   {% if session['sess_loged_username'] %}
                     <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
                     <li><a href="{{ url_for('home.listpets') }}">Mascotas</a></li>
+                    <li><a href="{{ url_for('home.shoppingcart') }}">Mi Carrito</a></li>
+                    <li><a href="{{ url_for('home.orders') }}">Mis Compras</a></li>
+                    <li><a><i class="fa fa-user"></i> {{ session['sess_loged_username'] }} </a></li>
                     <li><a href="{{ url_for('home.homelogout') }}">Logout</a></li>
-                    <li><a href="{{ url_for('home.orders') }}"><i class="fa fa-user"></i>  Hi, {{ session['sess_loged_username'] }}!</a></li>
-                    <li><a href="{{ url_for('home.shoppingcart') }}">Carrito de Compras</a></li>
                   {% else %}
                     <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
                     <li><a href="{{ url_for('home.listpets') }}">Mascotas</a></li>

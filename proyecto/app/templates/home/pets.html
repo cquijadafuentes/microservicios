@@ -1,51 +1,45 @@
 <!-- app/templates/home/pets.html -->
 
-{% extends "base_2.html" %}
+{% extends "base.html" %}
 {% block title %}Mascotas{% endblock %}
 {% block body %}
-<div class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="intro-message">
-                    <h2>Mascotas</h2>
-                    <hr class="intro-divider">                    
-                    </ul>
-                    <div id="results">
-                      {% if message %}
-                        {{ message }} <br> <br>
-                      {% endif %}
-                      <a href="/registerpet"> Registrar nueva mascota </a> <br>
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th>Código</th>
-                            <th>Especie</th>
-                            <th>Raza</th>
-                            <th>Valor</th>
-                            <th>Stock</th>
-                            {% if session['sess_loged_username'] %}
-                            <th>--</th>
-                            {% endif %}
-                          </tr>
-                        </thead>
-                        {% for pet in pets%}
-                        {% if pet['stock'] > 0 %}
-                          <tr>
-                            <td>{{ pet['id'] }}</td>
-                            <td>{{ pet['specie'] }}</td>
-                            <td>{{ pet['breed'] }}</td>
-                            <td>{{ pet['price'] }}</td>
-                            <td>{{ pet['stock'] }}</td>
-                            {% if session['sess_loged_username'] %}
-                            <td> <a href="/addpet/{{ pet['id'] }}/{{ pet['price'] }}"> Añadir al carrito </a> </td>
-                            {% endif %}
-                          </tr>
-                        {% endif %}
-                        {% endfor %}
-                      </table>
-                    </div>
-                </div>
+<div class="container">
+    <div class="row">
+        <div style="margin-top: 70px;" class="col-lg-12">
+            <h2>Mascotas</h2>
+            <div id="results">
+              {% if message %}
+                {{ message }} <br> <br>
+              {% endif %}
+              <a href="/registerpet"> Registrar nueva mascota </a> <br>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Especie</th>
+                    <th>Raza</th>
+                    <th>Valor</th>
+                    <th>Stock</th>
+                    {% if session['sess_loged_username'] %}
+                    <th>  </th>
+                    {% endif %}
+                  </tr>
+                </thead>
+                {% for pet in pets%}
+                {% if pet['stock'] > 0 %}
+                  <tr>
+                    <td>{{ pet['id'] }}</td>
+                    <td>{{ pet['specie'] }}</td>
+                    <td>{{ pet['breed'] }}</td>
+                    <td>{{ pet['price'] }}</td>
+                    <td>{{ pet['stock'] }}</td>
+                    {% if session['sess_loged_username'] %}
+                    <td> <a href="/addpet/{{ pet['id'] }}/{{ pet['price'] }}"> Añadir al carrito </a> </td>
+                    {% endif %}
+                  </tr>
+                {% endif %}
+                {% endfor %}
+              </table>
             </div>
         </div>
     </div>
