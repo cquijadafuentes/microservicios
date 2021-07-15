@@ -129,10 +129,11 @@ def shoppingcart(message=None):
             pcrejson = pc_req.json() 
             print(str(pcrejson))
             if pcrejson['stock'] < petcart['cant']:
+                modificacant(session['sess_loged_userphone'], petcart["id_pet"], pcrejson["stock"])
                 petcart['cant'] = pcrejson['stock']
-                mmss += (" - " + petcart['breed'] + " " + petcart['specie']) + " se ha actualizado por stock.\n"
+                mmss = "El carrito de compra se ha actualizado por stock."
             pets.append(petcart)
-    return render_template('home/shoppingcart.html', title="Carrito de compra", pets=req_pets.json()['json_list'], message=mmss)
+    return render_template('home/shoppingcart.html', title="Carrito de compra", pets=pets, message=mmss)
 
 @home.route('/checkout')
 def checkout():
@@ -158,8 +159,11 @@ def checkout():
                     suma += (cart["cant"] * pet["price"])
                     nuevostock = pet["stock"] - cart["cant"]
                     actualizastock.append({'id':pet["id"], 'stock':nuevostock})
+                    break
                 else:
-                    return shoppingcart()
+                    print("Problemas de stock con mascota" + str(pet["id"]))
+                    modificacant(cart["id_user"], cart["id_pet"], pet["stock"])
+                    return shoppingcart("El carrito de compra se ha actualizado por stock")
     print("suma: " + str(suma))
     print("mascotas cant: " + str(len(mascotas)))
     user = requests.get('http://petstorecustomer.appspot.com/list/byphone/'+session['sess_loged_userphone']).json()
@@ -207,8 +211,12 @@ def checkout():
         print("Orden exitosa:")
         print(str(req_creditupdate))
         print(req_creditupdate.text)
-        return render_template('home/shoppingcart.html', title="Carrito de compra", message="Compra realizada correctamente.")
-    return shoppingcart("Venta no se pudo realizar, saldo insuficiente")
+        return render_template('home/ordendecompra.html', title="Orden de Compra", message="Compra realizada correctamente.", mascotas=mascotas, total=suma)
+    if suma > user[0]["credit"]:
+        print("Usuario sin saldo suficiente")
+        return shoppingcart("Venta no se pudo realizar, saldo insuficiente")
+    print("Mascotas en el carro = 0")
+    return shoppingcart()
 
 
 
