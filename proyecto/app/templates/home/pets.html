@@ -19,6 +19,7 @@
                       <table class="table table-striped">
                         <thead>
                           <tr>
+                            <th>Código</th>
                             <th>Especie</th>
                             <th>Raza</th>
                             <th>Valor</th>
@@ -31,6 +32,7 @@
                         {% for pet in pets%}
                         {% if pet['stock'] > 0 %}
                           <tr>
+                            <td>{{ pet['id'] }}</td>
                             <td>{{ pet['specie'] }}</td>
                             <td>{{ pet['breed'] }}</td>
                             <td>{{ pet['price'] }}</td>

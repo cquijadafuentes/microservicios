@@ -79,6 +79,11 @@ def registerpet():
         req_pet = requests.get('http://practiceiv-on-gcloud.appspot.com/products/get/id/'+request.form['id'])
         print(req_pet.status_code)
         print(req_pet.text)
+        while req_pet.status_code != 200 and req_pet.status_code != 404:
+            print("Otra vez..")
+            req_pet = requests.get('http://practiceiv-on-gcloud.appspot.com/products/get/id/'+request.form['id'])
+            print(req_pet.status_code)
+            print(req_pet.text)
         if req_pet.status_code == 200:
             print("La mascota con esa id ya existe")
             return render_template('home/nuevamascota.html', title="Registro", message="El id de la mascota ya existe")
