@@ -9,7 +9,7 @@
             <h2>Carrito de Compra</h2>
             <div id="results">
               {% if message %}
-                {{ message }} <br>
+                <p class="messages"> {{ message }} </p>
               {% endif %}
               {% if pets %}
                 <table class="table table-striped">
@@ -38,7 +38,9 @@
               {% else %}
                 Su carrito está vacío... vea las mascotas de la tienda <a href="{{ url_for('home.listpets') }}">AQUÍ</a>
               {% endif %}
-              <br><br>
+              {% if saldo %}
+                <h4 align="right"> Saldo disponible: {{ saldo }} </h4>
+              {% endif %}
             </div>
             
         </div>

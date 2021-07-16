@@ -10,8 +10,8 @@
             <h2>Registrar nuevo Cliente</h2>
             <div id="results">
               {% if message %}
-                {{ message }} <br> <br>
-              {% endif %}                      
+                <p class="messages"> {{ message }} </p>
+              {% endif %}
               <form class="form" method="POST">
                 <div class="form-group">
                   <label class="control-label" for="username">Nombre</label><br>

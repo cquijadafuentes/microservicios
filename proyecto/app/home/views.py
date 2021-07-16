@@ -26,14 +26,13 @@ def dashboard():
     """
     return render_template('home/dashboard.html', title="Dashboard")
 
-@home.route('/homelogin/<username>/<userphone>/<useraddress>')
+@home.route('/homelogin/<username>/<userphone>/<useraddress>/<credit>')
 def homelogin(username=None, userphone=None, useraddress=None):
     if userphone is not None :
         session['sess_loged_username'] = username
         session['sess_loged_userphone'] = userphone
         session['sess_loged_useraddress'] = useraddress
-    
-    return shoppingcart()
+    return render_template('home/index.html', title="PetStoreSystem")
 
 
 @home.route('/homelogout')
@@ -60,7 +59,8 @@ def register(message=None):
             return render_template('home/registro.html', title="Registro", message="Telefono de usuario ya existe")
         registro = requests.post('http://petstorecustomer.appspot.com/create', json = datos)
         if registro.status_code == 200:
-            return homelogin(request.form['username'], request.form['phone'])
+            print("json: " + str(int(registro.json())))
+            return homelogin(request.form['username'], request.form['phone'], request.form['address'])
         print("respuesta: " + registro.text)
     print("desplegando webpage - registrando")
     return render_template('home/registro.html', title="Registro")
@@ -97,7 +97,6 @@ def registerpet():
         return listpets("Mascota registrada correctamente")
     print("desplegando webpage de registro de mascota")
     return render_template('home/nuevamascota.html', title="Registro")
-
 
 
 @home.route('/listusers')
@@ -143,7 +142,15 @@ def shoppingcart(message=None):
             petcart['breed'] = pcrejson['breed']
             petcart['specie'] = pcrejson['specie']
             pets.append(petcart)
-    return render_template('home/shoppingcart.html', title="Carrito de compra", pets=pets, message=mmss)
+    req_customer = requests.get('http://petstorecustomer.appspot.com/list/byphone/' + session['sess_loged_userphone'])
+    print(req_customer.text)
+    while req_customer.status_code != 200:
+        print("Otra vez...")
+        req_customer = requests.get('http://petstorecustomer.appspot.com/list/byphone/' + session['sess_loged_userphone'])
+        print(req_customer.text)
+    print("json: " + str(req_customer.json()))
+    return render_template('home/shoppingcart.html', title="Carrito de compra", pets=pets, message=mmss, saldo=int(req_customer.json()[0]['credit']))
+
 
 @home.route('/checkout')
 def checkout():
@@ -218,15 +225,16 @@ def checkout():
         while req_creditupdate.status_code != 200:
             print("Otra vez...")
             req_creditupdate = requests.get('http://petstorecustomer.appspot.com/pay/'+str(int(suma))+'/by-customer-with-phone/'+uphone)
-        print("Orden exitosa:")
-        print(str(req_creditupdate))
-        print(req_creditupdate.text)
+        print("Credito reducido, respuesta:")
+        print("req: " + str(req_creditupdate))
+        print("text: " + req_creditupdate.text)
         return render_template('home/ordendecompra.html', title="Orden de Compra", message="Compra realizada correctamente.", mascotas=mascotas, total=int(suma))
     if suma > user[0]["credit"]:
         print("Usuario sin saldo suficiente")
         return shoppingcart("Venta no se pudo realizar, saldo insuficiente")
     print("Mascotas en el carro = 0")
     return shoppingcart()
+
 
 @home.route('/orders')
 def orders():
@@ -239,6 +247,7 @@ def orders():
             userorders.append(order)
     return render_template('home/ordenes.html', title="Ordenes de Compra", orders=userorders)
 
+
 @home.route('/orderat/<fechahora>')
 def orderat(fechahora=None):
     if fechahora is None:
@@ -249,6 +258,8 @@ def orderat(fechahora=None):
     for pet in orderjson:
         total = total + (pet['pet_amount'] * pet['pet_price'])
     return render_template('home/ordendecompra.html', title="Orden de Compra", mascotas=orderjson, total=int(total), fechahora=fechahora)
+
+
 
 
 
