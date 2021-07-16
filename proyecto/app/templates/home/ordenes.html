@@ -8,20 +8,24 @@
         <div style="margin-top: 70px;" class="col-lg-12">
             <h2>Historial de Compras</h2>
             <div id="results">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Fecha</th>
-                    <th>Detalle</th>
-                  </tr>
-                </thead>
-                {% for order in orders%}
-                  <tr>
-                    <td>{{ order['timestamp'] }}</td>
-                    <td> <a href="/orderat/{{ order['timestamp'] }}"> Ver detalle </a> </td>
-                  </tr>
-                {% endfor %}
-              </table>
+              {% if orders %}
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Detalle</th>
+                    </tr>
+                  </thead>
+                  {% for order in orders%}
+                    <tr>
+                      <td>{{ order['timestamp'] }}</td>
+                      <td> <a href="/orderat/{{ order['timestamp'] }}"> Ver detalle </a> </td>
+                    </tr>
+                  {% endfor %}
+                </table>
+              {% else %}
+                No se registran compras.
+              {% endif %}
             </div>            
         </div>
     </div>
