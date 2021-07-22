@@ -26,7 +26,7 @@ def dashboard():
     """
     return render_template('home/dashboard.html', title="Dashboard")
 
-@home.route('/homelogin/<username>/<userphone>/<useraddress>/<credit>')
+@home.route('/homelogin/<username>/<userphone>/<useraddress>')
 def homelogin(username=None, userphone=None, useraddress=None):
     if userphone is not None :
         session['sess_loged_username'] = username

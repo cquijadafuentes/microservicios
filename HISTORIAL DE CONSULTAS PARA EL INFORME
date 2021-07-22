@@ -26,3 +26,9 @@ https://stackoverflow.com/questions/30673079/send-json-to-flask-using-requests/3
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+Creación de modal
+Validación de campos de entrada (numeros no negativos, stock > 0 y campos requeridos)
+
+Saldo del cliente
